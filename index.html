@@ -1467,22 +1467,22 @@
         <div class="join-form reveal" id="joinFormWrap">
           <h3>ENTRA<br/><span style="color: var(--orange);">NELLA FAM</span></h3>
           <p>Iscriviti alla newsletter ufficiale della Sneezy Fam e resta sempre aggiornato su tutto ciò che riguarda Yung Snapp.</p>
-          <form id="joinForm" onsubmit="handleSubmit(event)">
+          <form id="joinForm" action="https://formspree.io/f/xpwqrqzv" method="POST">
             <div class="form-group">
               <label for="fname">Nome</label>
-              <input type="text" id="fname" name="fname" placeholder="Il tuo nome" required />
+              <input type="text" id="fname" name="name" placeholder="Il tuo nome" required />
             </div>
             <div class="form-group">
               <label for="femail">Email</label>
-              <input type="email" id="femail" name="femail" placeholder="la.tua@email.com" required />
+              <input type="email" id="femail" name="email" placeholder="la.tua@email.com" required />
             </div>
             <div class="form-group">
               <label for="fcity">Città</label>
-              <input type="text" id="fcity" name="fcity" placeholder="Da dove sei?" />
+              <input type="text" id="fcity" name="city" placeholder="Da dove sei?" />
             </div>
             <div class="form-group">
               <label for="fhow">Come hai scoperto Yung Snapp?</label>
-              <select id="fhow" name="fhow">
+              <select id="fhow" name="discovery_method">
                 <option value="">Seleziona...</option>
                 <option value="spotify">Spotify</option>
                 <option value="instagram">Instagram</option>
@@ -1493,7 +1493,7 @@
               </select>
             </div>
             <div class="form-check">
-              <input type="checkbox" id="fprivacy" name="fprivacy" required />
+              <input type="checkbox" id="fprivacy" name="privacy_accepted" required />
               <label for="fprivacy">Accetto di ricevere aggiornamenti dalla Sneezy Fam. I tuoi dati non saranno mai condivisi con terze parti.</label>
             </div>
             <button type="submit" class="btn-submit">⚡ Unisciti alla Fam</button>
@@ -1622,14 +1622,35 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
-    // Form submit
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('joinForm');
-      const success = document.getElementById('formSuccess');
-      form.style.display = 'none';
-      success.style.display = 'block';
-    }
+    // Form submit handling with Formspree AJAX
+    const form = document.getElementById('joinForm');
+    const success = document.getElementById('formSuccess');
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      
+      try {
+        const response = await fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          form.reset();
+        } else {
+          const errorData = await response.json();
+          alert("Ops! C'è stato un problema con l'invio: " + (errorData.errors.map(error => error.message).join(", ")));
+        }
+      } catch (error) {
+        alert("Ops! C'è stato un problema tecnico. Riprova più tardi.");
+      }
+    });
 
     // Navbar scroll effect
     const nav = document.querySelector('nav');
