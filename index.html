@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNEEZY FAM — Yung Snapp Official Fanpage</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange:  #FF6B00;
+      --yellow:  #FFD600;
+      --cyan:    #00D4FF;
+      --pink:    #FF2D78;
+      --dark:    #0A0A0A;
+      --dark2:   #111111;
+      --dark3:   #1A1A1A;
+      --white:   #FFFFFF;
+      --grey:    #888888;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Space Grotesk', sans-serif;
+      --font-cond:    'Barlow Condensed', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--dark);
+      color: var(--white);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+    /* ===== NOISE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,107,0,0.25);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--orange);
+      object-fit: cover;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      color: var(--white);
+    }
+    .nav-logo-text span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--dark) !important;
+      padding: 8px 18px;
+      border-radius: 3px;
+      font-weight: 900 !important;
+    }
+    .nav-cta:hover { background: var(--yellow) !important; color: var(--dark) !important; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 20px 80px;
+      text-align: center;
+    }
+
+    /* Animated gradient background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,107,0,0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(0,212,255,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 90%, rgba(255,45,120,0.18) 0%, transparent 60%),
+        linear-gradient(160deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
+      animation: heroBgPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroBgPulse {
+      0%   { filter: brightness(1); }
+      100% { filter: brightness(1.12); }
+    }
+
+    /* Grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,107,0,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,0,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      padding: 5px 16px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      animation: fadeInDown 0.8s ease both;
+    }
+
+    .hero-logo-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid var(--orange);
+      object-fit: cover;
+      margin: 0 auto 28px;
+      display: block;
+      box-shadow: 0 0 40px rgba(255,107,0,0.5), 0 0 80px rgba(255,107,0,0.2);
+      animation: fadeInDown 0.9s ease 0.1s both, logoPulse 4s ease-in-out infinite;
+    }
+    @keyframes logoPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(255,107,0,0.5), 0 0 80px rgba(255,107,0,0.2); }
+      50%       { box-shadow: 0 0 60px rgba(255,107,0,0.8), 0 0 120px rgba(255,107,0,0.35); }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 6px;
+      color: var(--white);
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+    .hero-title .orange { color: var(--orange); }
+    .hero-title .stroke {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-cond);
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin: 16px 0 36px;
+      animation: fadeInUp 0.9s ease 0.35s both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.9s ease 0.5s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 3px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--dark);
+    }
+    .btn-primary:hover { background: var(--yellow); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,107,0,0.4); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeIn 1s ease 1s both;
+    }
+    .hero-scroll span {
+      font-family: var(--font-cond);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--orange), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.2); }
+    }
+
+    /* ===== SECTION COMMONS ===== */
+    section { padding: 100px 20px; }
+
+    .section-label {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: 3px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .section-title .stroke {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--grey);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ===== TICKER ===== */
+    .ticker-wrap {
+      background: var(--orange);
+      overflow: hidden;
+      padding: 12px 0;
+      border-top: 2px solid var(--yellow);
+      border-bottom: 2px solid var(--yellow);
+    }
+    .ticker {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker 25s linear infinite;
+    }
+    .ticker-item {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+      color: var(--dark);
+      padding: 0 40px;
+    }
+    .ticker-item::after { content: '★'; margin-left: 40px; }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== ABOUT / STATS ===== */
+    #about {
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+    }
+    #about::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid var(--orange);
+      border-radius: 4px;
+      transform: rotate(2deg);
+    }
+    .about-img-wrap::after {
+      content: 'YUNG SNAPP';
+      position: absolute;
+      bottom: -20px; right: -10px;
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(255,107,0,0.08);
+      letter-spacing: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 4px;
+      display: block;
+      filter: saturate(1.1) contrast(1.05);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .stat-card {
+      background: var(--dark3);
+      border: 1px solid rgba(255,107,0,0.2);
+      border-radius: 4px;
+      padding: 20px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-card:hover { border-color: var(--orange); transform: translateY(-4px); }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--orange);
+      letter-spacing: 2px;
+    }
+    .stat-label {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 4px;
+    }
+
+    /* ===== SPOTIFY ===== */
+    #spotify {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #spotify::before {
+      content: '';
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .spotify-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .spotify-card {
+      background: linear-gradient(135deg, #1DB954 0%, #158a3e 100%);
+      border-radius: 12px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .spotify-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+    .spotify-logo {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+    .spotify-artist {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .spotify-listeners {
+      font-family: var(--font-cond);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+    }
+    .spotify-listeners strong {
+      font-size: 1.6rem;
+      color: var(--white);
+    }
+    .spotify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: #1DB954;
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 50px;
+      transition: all 0.25s;
+    }
+    .spotify-btn:hover { background: var(--dark); color: #1DB954; transform: scale(1.05); }
+
+    .spotify-collabs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .collab-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 14px 18px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .collab-item:hover { border-color: var(--orange); transform: translateX(6px); }
+    .collab-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+    .collab-name {
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+    .collab-track {
+      font-size: 0.8rem;
+      color: var(--grey);
+      margin-top: 2px;
+    }
+
+    /* ===== COOKING / COUNTDOWN ===== */
+    #cooking {
+      background: var(--dark2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cooking::before {
+      content: 'SOON';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 25vw, 20rem);
+      color: rgba(255,107,0,0.04);
+      letter-spacing: 10px;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .cooking-inner { position: relative; z-index: 2; }
+
+    .cooking-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 7rem);
+      letter-spacing: 6px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .cooking-title .fire { color: var(--orange); }
+
+    .cooking-sub {
+      font-family: var(--font-cond);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 50px;
+    }
+
+    .hourglass-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hourglass-svg {
+      width: 100px;
+      height: 120px;
+      animation: hourglassFlip 4s ease-in-out infinite;
+    }
+    @keyframes hourglassFlip {
+      0%   { transform: rotate(0deg);   }
+      45%  { transform: rotate(0deg);   }
+      50%  { transform: rotate(180deg); }
+      95%  { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .cooking-msg {
+      font-family: var(--font-cond);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      animation: cookingPulse 2s ease-in-out infinite;
+    }
+    @keyframes cookingPulse {
+      0%, 100% { opacity: 0.6; }
+      50%       { opacity: 1;   }
+    }
+
+    .cooking-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .cooking-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: dotBounce 1.4s ease-in-out infinite;
+    }
+    .cooking-dot:nth-child(2) { animation-delay: 0.2s; }
+    .cooking-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotBounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40%           { transform: scale(1.2); opacity: 1;   }
+    }
+
+    /* ===== ALBUM ===== */
+    #album {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .album-covers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .album-cover-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .album-cover-card:first-child { grid-column: 1 / -1; }
+    .album-cover-card:hover { transform: scale(1.03); }
+    .album-cover-card img {
+      width: 100%;
+      display: block;
+      border-radius: 6px;
+    }
+    .album-cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .album-cover-card:hover .album-cover-overlay { opacity: 1; }
+    .album-cover-label {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    .album-info { }
+    .album-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--dark);
+      font-family: var(--font-cond);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .album-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: 4px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .album-desc {
+      font-size: 0.95rem;
+      color: var(--grey);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .album-formats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .format-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 8px 14px;
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .format-badge.vinyl { border-color: var(--orange); color: var(--orange); }
+    .album-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== FORM ===== */
+    #join {
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+    }
+    #join::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--yellow), var(--cyan), var(--pink), var(--orange));
+      background-size: 200% 100%;
+      animation: gradientShift 4s linear infinite;
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 0%;   }
+      100% { background-position: 200% 0%; }
+    }
+
+    .join-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .join-form {
+      background: var(--dark3);
+      border: 1px solid rgba(255,107,0,0.2);
+      border-radius: 8px;
+      padding: 40px;
+    }
+    .join-form h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .join-form p {
+      font-size: 0.9rem;
+      color: var(--grey);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus, .form-group select:focus { border-color: var(--orange); }
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group select option { background: var(--dark3); }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .form-check input[type="checkbox"] {
+      width: 18px; height: 18px;
+      margin-top: 2px;
+      accent-color: var(--orange);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .form-check label {
+      font-size: 0.8rem;
+      color: var(--grey);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--dark);
+      font-family: var(--font-cond);
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-submit:hover { background: var(--yellow); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,107,0,0.4); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 30px;
+    }
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    .form-success h4 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .form-success p { font-size: 0.9rem; color: var(--grey); }
+
+    .join-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .perk-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .perk-icon {
+      width: 44px; height: 44px;
+      border-radius: 4px;
+      background: rgba(255,107,0,0.15);
+      border: 1px solid rgba(255,107,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .perk-text h4 {
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .perk-text p { font-size: 0.85rem; color: var(--grey); line-height: 1.5; }
+
+    /* ===== SOCIAL ===== */
+    #social {
+      background: var(--dark);
+      text-align: center;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 50px auto 0;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 24px 28px;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .social-card:hover { transform: translateY(-4px); }
+    .social-card:hover::before { opacity: 1; }
+
+    .social-card.insta::before { background: linear-gradient(135deg, rgba(253,88,73,0.12), rgba(214,36,159,0.12), rgba(88,81,219,0.12)); }
+    .social-card.tiktok::before { background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(255,45,120,0.12)); }
+    .social-card.insta:hover { border-color: #E1306C; }
+    .social-card.tiktok:hover { border-color: var(--cyan); }
+
+    .social-icon {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .social-card.insta .social-icon { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-card.tiktok .social-icon { background: linear-gradient(135deg, #010101, #69C9D0); }
+
+    .social-info { position: relative; z-index: 1; text-align: left; }
+    .social-tag {
+      font-family: var(--font-cond);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 4px;
+    }
+    .social-handle {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+    .social-desc {
+      font-size: 0.8rem;
+      color: var(--grey);
+      margin-top: 4px;
+    }
+    .social-arrow {
+      margin-left: auto;
+      font-size: 1.2rem;
+      color: var(--grey);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .social-card:hover .social-arrow { transform: translateX(4px); color: var(--orange); }
+
+    .social-divider {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--grey);
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .social-divider::before, .social-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ===== THANKS ===== */
+    #thanks {
+      background: var(--dark2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #thanks::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,0,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .thanks-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .thanks-logo {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--orange);
+      object-fit: cover;
+      margin: 0 auto 28px;
+      display: block;
+    }
+    .thanks-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+    .thanks-text {
+      font-size: 1rem;
+      color: var(--grey);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .thanks-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .thanks-name {
+      background: var(--dark3);
+      border: 1px solid rgba(255,107,0,0.3);
+      border-radius: 3px;
+      padding: 8px 18px;
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .thanks-quote {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.15);
+      margin-top: 40px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,107,0,0.2);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 5px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--orange); }
+    .footer-sub {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .footer-links a {
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 1px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .about-grid, .spotify-inner, .album-grid, .join-inner { grid-template-columns: 1fr; gap: 40px; }
+      .social-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+      .album-covers { grid-template-columns: 1fr; }
+      .album-cover-card:first-child { grid-column: auto; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 70px 16px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .hero-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <img src="logo.jpeg" alt="Sneezy Fam Logo" />
+      <span class="nav-logo-text">SNEEZY<span>.</span>FAM</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Chi è</a></li>
+      <li><a href="#spotify">Spotify</a></li>
+      <li><a href="#cooking">New Music</a></li>
+      <li><a href="#album">Album</a></li>
+      <li><a href="#social">Social</a></li>
+      <li><a href="#join" class="nav-cta">Entra nella Fam</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">★ Yung Snapp Official Fanpage ★</div>
+      <img src="logo.jpeg" alt="Sneezy Fam" class="hero-logo-circle" />
+      <h1 class="hero-title">
+        SNEEZY<br/>
+        <span class="stroke">FAM</span>
+      </h1>
+      <p class="hero-subtitle">@sneezy.fam — La community ufficiale</p>
+      <div class="hero-btns">
+        <a href="#join" class="btn btn-primary">⚡ Entra nella Fam</a>
+        <a href="#spotify" class="btn btn-secondary">🎵 Ascolta su Spotify</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== TICKER ===== -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span class="ticker-item">YUNG SNAPP</span>
+      <span class="ticker-item">HOTEL MONTANA</span>
+      <span class="ticker-item">NAPOLI</span>
+      <span class="ticker-item">SNEEZY FAM</span>
+      <span class="ticker-item">TRAP ITALIANA</span>
+      <span class="ticker-item">1.2M ASCOLTATORI</span>
+      <span class="ticker-item">YUNG SNAPP</span>
+      <span class="ticker-item">HOTEL MONTANA</span>
+      <span class="ticker-item">NAPOLI</span>
+      <span class="ticker-item">SNEEZY FAM</span>
+      <span class="ticker-item">TRAP ITALIANA</span>
+      <span class="ticker-item">1.2M ASCOLTATORI</span>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="yung-snapp-3.jpg" alt="Yung Snapp" class="about-img" />
+        </div>
+        <div class="reveal">
+          <p class="section-label">Chi è</p>
+          <h2 class="section-title">YUNG<br/><span class="stroke">SNAPP</span></h2>
+          <p class="section-desc">
+            Antonio Lago, in arte <strong>Yung Snapp</strong>, nasce a Napoli il 6 agosto 1996.
+            Rapper, produttore e membro del collettivo <strong>SLF</strong>, è uno dei volti più autentici
+            della scena trap napoletana e italiana. Con uno stile unico che fonde sonorità urban,
+            liriche crude e un'estetica visiva inconfondibile, ha conquistato milioni di fan in tutta Italia.
+          </p>
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-num">1.2M</div>
+              <div class="stat-label">Ascoltatori<br/>mensili</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">20+</div>
+              <div class="stat-label">Artisti con<br/>cui ha collaborato</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">2x</div>
+              <div class="stat-label">Disco d'Oro<br/>FIMI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPOTIFY ===== -->
+  <section id="spotify">
+    <div class="container">
+      <div class="spotify-inner">
+        <div class="reveal">
+          <p class="section-label">Ascoltalo ora</p>
+          <h2 class="section-title">SU<br/><span class="stroke">SPOTIFY</span></h2>
+          <p class="section-desc" style="margin-bottom: 36px;">
+            Yung Snapp conta oltre <strong>1,2 milioni di ascoltatori mensili</strong> su Spotify.
+            Ha collaborato e prodotto con più di <strong>20 artisti</strong> tra i più importanti
+            della scena rap e trap italiana, tra cui Geolier, ANNA, MV Killa, Lele Blade, Rhove,
+            Rosa Chemical, Rocco Hunt, Emis Killa e molti altri.
+          </p>
+          <a href="https://open.spotify.com/artist/4y5lvMadZv6NAv8RgcCRem?si=bLZtb-TMQ6Gvt9kXksJQ7Q" target="_blank" class="btn btn-primary" style="font-size:1rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            Apri su Spotify
+          </a>
+        </div>
+        <div class="reveal">
+          <div class="spotify-card">
+            <div class="spotify-logo">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            </div>
+            <div class="spotify-artist">Yung Snapp</div>
+            <div class="spotify-listeners"><strong>1,2 Milioni</strong><br/>di ascoltatori mensili</div>
+            <a href="https://open.spotify.com/artist/4y5lvMadZv6NAv8RgcCRem?si=bLZtb-TMQ6Gvt9kXksJQ7Q" target="_blank" class="spotify-btn">
+              ▶ Ascolta ora
+            </a>
+          </div>
+          <div class="spotify-collabs" style="margin-top: 20px;">
+            <div class="collab-item">
+              <div class="collab-dot"></div>
+              <div>
+                <div class="collab-name">Geolier</div>
+                <div class="collab-track">Kiss You (F**k You) — Hotel Montana</div>
+              </div>
+            </div>
+            <div class="collab-item">
+              <div class="collab-dot"></div>
+              <div>
+                <div class="collab-name">ANNA</div>
+                <div class="collab-track">Shawty — Hotel Montana</div>
+              </div>
+            </div>
+            <div class="collab-item">
+              <div class="collab-dot"></div>
+              <div>
+                <div class="collab-name">Rhove</div>
+                <div class="collab-track">Marijuana — Singolo 2024</div>
+              </div>
+            </div>
+            <div class="collab-item">
+              <div class="collab-dot"></div>
+              <div>
+                <div class="collab-name">Rosa Chemical</div>
+                <div class="collab-track">Yummy Yummy — Singolo 2025</div>
+              </div>
+            </div>
+            <div class="collab-item">
+              <div class="collab-dot"></div>
+              <div>
+                <div class="collab-name">MV Killa, Lele Blade, Vale Lambo</div>
+                <div class="collab-track">SLF Collective — Multipli progetti</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COOKING ===== -->
+  <section id="cooking">
+    <div class="container">
+      <div class="cooking-inner">
+        <p class="section-label" style="text-align:center;">Nuova musica in arrivo</p>
+        <h2 class="cooking-title">
+          NAPOLI STA<br/>
+          <span class="fire">CUCINANDO</span>…
+        </h2>
+        <p class="cooking-sub">Qualcosa di grande sta per arrivare</p>
+        <div class="hourglass-wrap">
+          <!-- Animated SVG Hourglass -->
+          <svg class="hourglass-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Frame -->
+            <rect x="20" y="5" width="60" height="10" rx="4" fill="#FF6B00"/>
+            <rect x="20" y="105" width="60" height="10" rx="4" fill="#FF6B00"/>
+            <!-- Glass outline -->
+            <path d="M25 15 L75 15 L55 58 L75 105 L25 105 L45 58 Z" stroke="#FF6B00" stroke-width="2" fill="rgba(255,107,0,0.08)"/>
+            <!-- Top sand -->
+            <clipPath id="topClip">
+              <path d="M25 15 L75 15 L55 58 L45 58 Z"/>
+            </clipPath>
+            <rect x="20" y="15" width="60" height="43" fill="rgba(255,214,0,0.7)" clip-path="url(#topClip)">
+              <animate attributeName="height" values="43;0;43" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="15;58;15" dur="4s" repeatCount="indefinite"/>
+            </rect>
+            <!-- Bottom sand -->
+            <clipPath id="botClip">
+              <path d="M45 58 L55 58 L75 105 L25 105 Z"/>
+            </clipPath>
+            <rect x="20" y="58" width="60" height="47" fill="rgba(255,107,0,0.7)" clip-path="url(#botClip)">
+              <animate attributeName="height" values="0;47;0" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="105;58;105" dur="4s" repeatCount="indefinite"/>
+            </rect>
+            <!-- Sand stream -->
+            <line x1="50" y1="55" x2="50" y2="65" stroke="#FFD600" stroke-width="2" opacity="0.8">
+              <animate attributeName="opacity" values="0;1;0" dur="0.5s" repeatCount="indefinite"/>
+            </line>
+          </svg>
+          <p class="cooking-msg">Resta sintonizzato</p>
+          <div class="cooking-dots">
+            <div class="cooking-dot"></div>
+            <div class="cooking-dot"></div>
+            <div class="cooking-dot"></div>
+          </div>
+          <p style="font-family: var(--font-cond); font-size: 0.85rem; letter-spacing: 2px; color: var(--grey); margin-top: 12px; text-transform: uppercase;">
+            Segui i social per non perdere nessun aggiornamento
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALBUM ===== -->
+  <section id="album">
+    <div class="container">
+      <div class="album-grid">
+        <div class="album-covers reveal">
+          <div class="album-cover-card">
+            <img src="hotel-montana-cover.jpg" alt="Hotel Montana Cover" />
+            <div class="album-cover-overlay">
+              <span class="album-cover-label">HOTEL MONTANA — DELUXE</span>
+            </div>
+          </div>
+          <div class="album-cover-card">
+            <img src="hotel-montana-vinyl.jpg" alt="Hotel Montana Vinyl" />
+            <div class="album-cover-overlay">
+              <span class="album-cover-label">VINILE</span>
+            </div>
+          </div>
+          <div class="album-cover-card">
+            <img src="yung-snapp-1.jpg" alt="Yung Snapp" style="object-fit:cover; height:200px; width:100%;" />
+            <div class="album-cover-overlay">
+              <span class="album-cover-label">YUNG SNAPP</span>
+            </div>
+          </div>
+        </div>
+        <div class="album-info reveal">
+          <span class="album-tag">★ Disco d'Oro FIMI</span>
+          <h2 class="album-name">HOTEL<br/>MONTANA</h2>
+          <p class="album-desc">
+            Pubblicato il <strong>1° settembre 2023</strong> per Warner Music Italy,
+            <em>Hotel Montana</em> è il primo album solista di Yung Snapp.
+            Un progetto che racconta storie di vita, ambizione e street culture attraverso
+            sonorità trap e urban di altissimo livello. Certificato <strong>Disco d'Oro</strong> dalla FIMI.
+            Disponibile in versione CD autografata e <strong>vinile</strong>.
+          </p>
+          <div class="album-formats">
+            <div class="format-badge">
+              <span>💿</span> CD Autografato
+            </div>
+            <div class="format-badge vinyl">
+              <span>🎵</span> Vinile LP
+            </div>
+            <div class="format-badge">
+              <span>📱</span> Digital
+            </div>
+          </div>
+          <div class="album-cta-row">
+            <a href="https://www.amazon.it/Hotel-Montana-Autografato-Yung-Snapp/dp/B0CCDQ4M6V" target="_blank" class="btn btn-primary">
+              🛒 Acquista su Amazon
+            </a>
+            <a href="https://open.spotify.com/artist/4y5lvMadZv6NAv8RgcCRem" target="_blank" class="btn btn-secondary">
+              🎧 Ascolta su Spotify
+            </a>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--grey); margin-top: 14px; font-family: var(--font-cond); letter-spacing: 1px;">
+            ★ Disponibile anche in versione <strong style="color: var(--orange);">VINILE</strong> — edizione limitata
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JOIN FORM ===== -->
+  <section id="join">
+    <div class="container">
+      <div class="join-inner">
+        <div class="join-perks reveal">
+          <p class="section-label">Community</p>
+          <h2 class="section-title" style="margin-bottom: 36px;">ENTRA<br/>NELLA <span class="stroke">FAM</span></h2>
+          <div class="perk-item">
+            <div class="perk-icon">⚡</div>
+            <div class="perk-text">
+              <h4>Aggiornamenti in anteprima</h4>
+              <p>Ricevi per primo tutte le news su nuova musica, drop e contenuti esclusivi di Yung Snapp.</p>
+            </div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon">🎟️</div>
+            <div class="perk-text">
+              <h4>Concerti & Live</h4>
+              <p>Sii il primo a sapere di nuove date e concerti. Non perderti nessun evento live.</p>
+            </div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon">🔥</div>
+            <div class="perk-text">
+              <h4>Community esclusiva</h4>
+              <p>Fai parte della famiglia ufficiale dei fan di Yung Snapp. Napoli sta cucinando per voi.</p>
+            </div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon">🎵</div>
+            <div class="perk-text">
+              <h4>Contenuti speciali</h4>
+              <p>Accedi a contenuti, playlist e materiali riservati ai membri della Sneezy Fam.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="join-form reveal" id="joinFormWrap">
+          <h3>ENTRA<br/><span style="color: var(--orange);">NELLA FAM</span></h3>
+          <p>Iscriviti alla newsletter ufficiale della Sneezy Fam e resta sempre aggiornato su tutto ciò che riguarda Yung Snapp.</p>
+          <form id="joinForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="fname">Nome</label>
+              <input type="text" id="fname" name="fname" placeholder="Il tuo nome" required />
+            </div>
+            <div class="form-group">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" name="femail" placeholder="la.tua@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="fcity">Città</label>
+              <input type="text" id="fcity" name="fcity" placeholder="Da dove sei?" />
+            </div>
+            <div class="form-group">
+              <label for="fhow">Come hai scoperto Yung Snapp?</label>
+              <select id="fhow" name="fhow">
+                <option value="">Seleziona...</option>
+                <option value="spotify">Spotify</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="youtube">YouTube</option>
+                <option value="amici">Amici</option>
+                <option value="altro">Altro</option>
+              </select>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="fprivacy" name="fprivacy" required />
+              <label for="fprivacy">Accetto di ricevere aggiornamenti dalla Sneezy Fam. I tuoi dati non saranno mai condivisi con terze parti.</label>
+            </div>
+            <button type="submit" class="btn-submit">⚡ Unisciti alla Fam</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">🔥</div>
+            <h4>SEI NELLA FAM!</h4>
+            <p>Benvenuto nella Sneezy Fam! Riceverai presto tutti gli aggiornamenti su Yung Snapp direttamente nella tua inbox.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL ===== -->
+  <section id="social">
+    <div class="container">
+      <p class="section-label" style="text-align:center;">Seguici</p>
+      <h2 class="section-title" style="text-align:center;">RESTA<br/><span class="stroke">CONNESSO</span></h2>
+      <p class="section-desc" style="text-align:center; margin: 16px auto 0;">
+        Segui la fanpage ufficiale e Yung Snapp sui social per non perdere nessun aggiornamento.
+      </p>
+
+      <div class="social-grid">
+        <!-- FAM SOCIALS -->
+        <div class="social-divider reveal">Sneezy Fam — Fanpage Ufficiale</div>
+
+        <a href="https://www.instagram.com/sneezy.fam" target="_blank" class="social-card insta reveal">
+          <div class="social-icon">📸</div>
+          <div class="social-info">
+            <div class="social-tag">Instagram · Fanpage</div>
+            <div class="social-handle">@sneezy.fam</div>
+            <div class="social-desc">Yung Snapp Official Fanpage</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+
+        <a href="https://www.tiktok.com/@sneezy_fam" target="_blank" class="social-card tiktok reveal">
+          <div class="social-icon">🎵</div>
+          <div class="social-info">
+            <div class="social-tag">TikTok · Fanpage</div>
+            <div class="social-handle">@sneezy_fam</div>
+            <div class="social-desc">Video, clip e contenuti esclusivi</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+
+        <!-- YUNG SNAPP SOCIALS -->
+        <div class="social-divider reveal">Yung Snapp — Ufficiale</div>
+
+        <a href="https://www.instagram.com/yung.snapp" target="_blank" class="social-card insta reveal">
+          <div class="social-icon">📸</div>
+          <div class="social-info">
+            <div class="social-tag">Instagram · Ufficiale</div>
+            <div class="social-handle">@yung.snapp</div>
+            <div class="social-desc">Profilo ufficiale di Yung Snapp</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+
+        <a href="https://www.tiktok.com/@yungsnapp" target="_blank" class="social-card tiktok reveal">
+          <div class="social-icon">🎵</div>
+          <div class="social-info">
+            <div class="social-tag">TikTok · Ufficiale</div>
+            <div class="social-handle">@yungsnapp</div>
+            <div class="social-desc">Contenuti ufficiali di Yung Snapp</div>
+          </div>
+          <div class="social-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THANKS ===== -->
+  <section id="thanks">
+    <div class="container">
+      <div class="thanks-inner reveal">
+        <img src="logo.jpeg" alt="Sneezy Fam" class="thanks-logo" />
+        <h2 class="thanks-title">GRAZIE<br/><span style="color: var(--orange);">FAM</span></h2>
+        <p class="thanks-text">
+          Questa pagina nasce dall'amore puro per la musica di Yung Snapp e per tutta la community
+          che ogni giorno lo supporta. Un grazie di cuore a tutti voi che fate parte della
+          <strong>Sneezy Fam</strong> — siete la ragione per cui tutto questo esiste.
+          Un ringraziamento speciale va a chi rende tutto possibile dietro le quinte.
+        </p>
+        <div class="thanks-names">
+          <div class="thanks-name">❤️ Yung Snapp</div>
+          <div class="thanks-name">🙌 Marco Conte — Personal Manager</div>
+          <div class="thanks-name">🔥 Tutta la Community</div>
+          <div class="thanks-name">🎵 SLF Collective</div>
+          <div class="thanks-name">🏙️ Napoli</div>
+        </div>
+        <a href="#join" class="btn btn-primary" style="font-size:1rem;">⚡ Entra nella Fam</a>
+        <p class="thanks-quote">NAPOLI STA CUCINANDO…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo">SNEEZY<span>.</span>FAM</div>
+    <div class="footer-sub">Yung Snapp Official Fanpage — @sneezy.fam</div>
+    <div class="footer-links">
+      <a href="#about">Chi è</a>
+      <a href="#spotify">Spotify</a>
+      <a href="#cooking">New Music</a>
+      <a href="#album">Album</a>
+      <a href="#join">Newsletter</a>
+      <a href="#social">Social</a>
+    </div>
+    <div class="footer-copy">
+      © 2025 Sneezy Fam — Fanpage non ufficiale gestita da fan. Tutti i diritti musicali appartengono ai rispettivi proprietari.
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('joinForm');
+      const success = document.getElementById('formSuccess');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+
+    // Navbar scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.style.background = 'rgba(10,10,10,0.98)';
+      } else {
+        nav.style.background = 'rgba(10,10,10,0.88)';
+      }
+    });
+  </script>
+</body>
+</html>
