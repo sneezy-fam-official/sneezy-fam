@@ -540,9 +540,21 @@
     /* ===== COOKING / COUNTDOWN ===== */
     #cooking {
       background: var(--dark2);
+      background-image: url('hourglass-bg.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
+    #cooking::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.75);
+      z-index: 1;
+      pointer-events: none;
     }
     #cooking::before {
       content: 'SOON';
@@ -555,6 +567,7 @@
       letter-spacing: 10px;
       pointer-events: none;
       white-space: nowrap;
+      z-index: 0;
     }
 
     .cooking-inner { position: relative; z-index: 2; }
